@@ -27,6 +27,8 @@ innerK = 5;
 %% Outer Cross-Validation for Generalizability
 outerCV = cvpartition(subjects_aligned_training_set.sex_recoded, 'KFold', outerK);
 accs = zeros(numel(lambda_values), outerK);
+center_values = struct('values', {});
+scale_values = struct('values', {});
 
 for i = 1:outerK
     predictors_outer_train_aligned = predictors_aligned_training_set(outerCV.training(i), :);
@@ -49,9 +51,7 @@ for i = 1:outerK
     [predictors_train_outer_aligned_norm, C, S] = normalize(predictors_train_aligned_r);
     predictors_test_aligned_norm = normalize(predictors_test_aligned_r, 'center', C, 'scale', S);
     
-    center_values = struct('values', {});
     center_values(i).values = C;
-    scale_values = struct('values', {});
     scale_values(i).values = S;
 
 
