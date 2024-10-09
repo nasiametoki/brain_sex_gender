@@ -23,6 +23,8 @@ clear start_power end_power step_power
 % Number of folds for outer and inner cross-validation
 outerK = 5;
 innerK = 5;
+center_values = struct('values', {});
+scale_values = struct('values', {});
 
 %% Initialize variables to store results
 cvMSE = zeros(length(lambda_values), 1);
@@ -44,9 +46,7 @@ for i = 1:outerK
     [predictors_females_train_norm, C, S] = normalize(predictors_females_train);
     predictors_females_test_norm = normalize(predictors_females_test, 'center', C, 'scale', S);
 
-    center_values = struct('values', {});
     center_values(i).values = C;
-    scale_values = struct('values', {});
     scale_values(i).values = S;
 
     %% Nested Cross-Validation to Tune Lambda
