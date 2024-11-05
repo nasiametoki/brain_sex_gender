@@ -1,6 +1,6 @@
 # brain_sex_gender
 
-This is the analysis workflow for:
+This is the analysis workflow for: ["Brain functional connectivity, but not neuroanatomy, captures the interrelationship between sex and gender in preadolescents"](https://doi.org/10.1101/2024.10.31.621379)
 
 ## Overview
 * ## SVM
